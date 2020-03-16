@@ -64,10 +64,10 @@ function getCurrent(city) {
         $("#earthForecast").append(currCard);
 
         //add location to card header
-        var currCardHead = $("<div>").attr("class", "card-header").text("Current weather for " + response.name);
+        var currCardHead = $("<div>").attr("class", "card-header").text("Current weather in " + response.name);
         currCard.append(currCardHead);
 
-        var cardRow = $("<div>").attr("class", "row no-gutters");
+        var cardRow = $("<div>").attr("class", "row");
         currCard.append(cardRow);
 
         //get icon for weather conditions
@@ -83,7 +83,7 @@ function getCurrent(city) {
         cardBody.append($("<h3>").attr("class", "card-title").text(response.name));
         //display last updated
         var currdate = moment(response.dt, "X").format("dddd, MMMM Do YYYY, h:mm a");
-        cardBody.append($("<p>").attr("class", "card-text").append($("<small>").attr("class", "text-muted").text("Last updated: " + currdate)));
+        cardBody.append($("<p>").attr("class", "card-text").append($("<small>").attr("class", "text-muted").text(currdate)));
         //display Temperature
         cardBody.append($("<p>").attr("class", "card-text").html("Temperature: " + response.main.temp + " &#8457;"));
         //display Humidity
@@ -177,8 +177,6 @@ function saveLoc(loc){
 }
 
 $("#searchbtn").on("click", function () {
-    //don't refresh the screen
-    event.preventDefault();
     //grab the value of the input field
     var loc = $("#searchinput").val().trim();
     //if loc wasn't empty

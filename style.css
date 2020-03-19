@@ -1,0 +1,27 @@
+.one-fifth {
+    box-sizing: border-box;
+    width: 20%;
+    margin: 5px;
+    padding: 5px;
+    
+}
+
+.one-fifth:first-child {
+    margin-left: 0px;
+}
+
+.one-fifth:last-child{
+    margin-right: 0px;
+}
+
+.forecast {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0px;
+}
+
+#searchbtn{
+    padding: 6px 5px 0px 5px;
+
+}

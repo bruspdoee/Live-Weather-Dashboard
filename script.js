@@ -2,12 +2,8 @@ var savedLocations = [];
 var currentLoc;
 
 function initialize() {
-    //grab previous locations from local storage
     savedLocations = JSON.parse(localStorage.getItem("weathercities"));
-    var lastSearch;
-    //display buttons for previous searches
     if (savedLocations) {
-        //get the last city searched so we can display it
         currentLoc = savedLocations[savedLocations.length - 1];
         showPrevious();
         getCurrent(currentLoc);
@@ -17,7 +13,7 @@ function initialize() {
 function success(position) {
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=7e4c7478cc7ee1e11440bf55a8358ec3";
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=22277b60fa20215c238aefc64778ca75";
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -30,7 +26,6 @@ function success(position) {
 }
 
 function showPrevious() {
-    //show the previously searched for locations based on what is in local storage
     if (savedLocations) {
         $("#prevSearches").empty();
         var btns = $("<div>").attr("class", "list-group");
@@ -49,7 +44,7 @@ function showPrevious() {
 }
 
 function getCurrent(city) {
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=e0cd043d45cf2cca873bddeb40222c6e&units=imperial";
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=22277b60fa20215c238aefc64778ca75";
     $.ajax({
         url: queryURL,
         method: "GET",
@@ -81,7 +76,6 @@ function getCurrent(city) {
         textDiv.append(cardBody);
         //display city name
         cardBody.append($("<h3>").attr("class", "card-title").text(response.name));
-        //display last updated
         var currdate = moment(response.dt, "X").format("dddd, MMMM Do YYYY, h:mm a");
         cardBody.append($("<p>").attr("class", "card-text").append($("<small>").attr("class", "text-muted").text(currdate)));
         //display Temperature
@@ -91,8 +85,7 @@ function getCurrent(city) {
         //display Wind Speed
         cardBody.append($("<p>").attr("class", "card-text").text("Wind Speed: " + response.wind.speed + " MPH"));
 
-        //get UV Index
-        var uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=e0cd043d45cf2cca873bddeb40222c6e&lat=" + response.coord.lat + "&lon=" + response.coord.lat;
+        var uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=22277b60fa20215c238aefc64778ca75&lat=" + response.coord.lat + "&lon=" + response.coord.lat;
         $.ajax({
             url: uvURL,
             method: "GET"
@@ -124,7 +117,7 @@ function getCurrent(city) {
 
 function getForecast(city) {
     //get 5 day forecast
-    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + city + "&APPID=e0cd043d45cf2cca873bddeb40222c6e&units=imperial";
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + city + "&APPID=22277b60fa20215c238aefc64778ca75";
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -133,7 +126,6 @@ function getForecast(city) {
         var newrow = $("<div>").attr("class", "forecast");
         $("#earthForecast").append(newrow);
 
-        //loop through array response to find the forecasts for 3pm
         for (var i = 0; i < response.list.length; i++) {
             if (response.list[i].dt_txt.indexOf("15:00:00") !== -1) {
                 var newCol = $("<div>").attr("class", "one-fifth");
@@ -159,12 +151,10 @@ function getForecast(city) {
 }
 
 function clear() {
-    //clear all the weather
     $("#earthForecast").empty();
 }
 
 function saveLoc(loc){
-    //add this to the saved locations array
     if (savedLocations === null) {
         savedLocations = [loc];
     }
@@ -179,7 +169,6 @@ function saveLoc(loc){
 $("#searchbtn").on("click", function () {
     //grab the value of the input field
     var loc = $("#searchinput").val().trim();
-    //if loc wasn't empty
     if (loc !== "") {
         //clear the previous forecast
         clear();

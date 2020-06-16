@@ -1,27 +1,157 @@
-.one-fifth {
-    box-sizing: border-box;
-    width: 20%;
-    margin: 5px;
-    padding: 5px;
-    
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.one-fifth:first-child {
-    margin-left: 0px;
+h1 {
+  font-size: 36px;
+  text-align: center;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+header {
+  background-color: burlywood;
 }
 
-.one-fifth:last-child{
-    margin-right: 0px;
+.left-pane {
+  background-color: whitesmoke;
 }
 
-.forecast {
+.five-day {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+}
+
+.card-small {
+  background-color: lightgray;
+  color: black;
+  margin: 0;
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+  width: 135px;
+  padding: 0.5rem;
+}
+
+.card-small img {
+  object-fit: cover;
+}
+
+.list-group-item.city {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  padding: 0.75rem;
+  background-color: burlywood;
+}
+
+.btn-primary {
+  background-color: burlywood;
+}
+
+.table {
+  background-color: white;
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
+
+#searchLabel {
+  font-weight: bold;
+}
+
+#city-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 0;
+}
+
+#today {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#time-hour {
+  background-color: lightgray;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+p#description {
+  padding: 1rem;
+  padding-left: 1.25rem;
+}
+
+#uv-index {
+  color: black;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+}
+
+#conditions-image {
+  background-color: lightgray;
+  width: 8rem;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 576px) {
+  .left-pane,
+  .right-pane,
+  .card-big,
+  .card-small,
+  .row {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: whitesmoke;
+  }
+
+  .city-list {
+    margin: 0;
+    padding: 0;
+  }
+
+  .right-pane {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 10px 0px;
-}
+    flex-direction: column;
+    padding: 0;
+  }
 
-#searchbtn{
-    padding: 6px 5px 0px 5px;
+  .card-big {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    padding: 1rem;
+  }
 
+  .five-day {
+    flex-direction: column;
+  }
+
+  .card-small {
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }
+
+  .card-small img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 10rem;
+  }
+
+  #description {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  #uv-index {
+    padding: 0.1rem 0.5rem;
+  }
 }

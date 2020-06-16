@@ -1,57 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Weather Dashboard</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brus P. Weather Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+  <body>
+    <header>
+      <h1>Weather Dashboard</h1>
+    </header>
 
-    <title> Brus P. Weather Dashboard </title>
-
-</head>
-
-<body>
-
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand"> Brus P. Weather Dash </a>
-    </nav>
-
-    <div class="container-fluid">
-        <div class="row mt-3">
-            <div class="col-md-3 searchArea">
-                <h2 class="text-secondary">Search for a City:</h2>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="searchinput" type="search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" id="searchbtn" type="submit">
-                            <i class="material-icons">search</i>
-                        </button>
-                    </div>
-                </div>
-                <div class="mt-5" id="prevSearches">
-                    <!--Buttons for previous searches here-->
-                </div>
+    <main class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 col-sm-4 left-side">
+          <div class="row">
+            <div class="col-sm mt-3">
+              <label for="search" id="searchLabel">Search for a City:</label>
             </div>
-
-            <div class="col-md-9">
-                <div class="container" id="earthForecast">
-                    <!--Weather for current location-->
-                </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-auto pr-0">
+              <input id="searchInput" type="search" class="form-control" />
             </div>
+            <div class="col-auto pl-0">
+              <button
+                id="btnSearchSubmit"
+                type="submit"
+                class="btn btn-primary"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <ul id="city-list" class="list-group"></ul>
+            </div>
+          </div>
         </div>
-    </div>
 
-</body>
+        <div class="col-md-9 col-sm-8 right-side">
+          <div class="row">
+            <div class="col-12 mt-3">
+              <div class="card card-big">
+                <div class="card-body">
+                  <div id="today">
+                    <img
+                      id="conditions-image"
+                      src=""
+                      alt="Current Weather Conditions"
+                    />
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6 px-0">
+                      <table class="table table-sm table-hover">
+                        <tr>
+                          <th>Temperature:</th>
+                          <td><span id="temperature"></span></td>
+                        </tr>
+                        <tr>
+                          <th>Humidity:</th>
+                          <td><span id="humidity"></span></td>
+                        </tr>
+                        <tr>
+                          <th>Windspeed:</th>
+                          <td><span id="wind-speed"></span></td>
+                        </tr>
+                        <tr>
+                          <th>UV Index:</th>
+                          <td><span id="uv-index"></span></td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 mt-3">
+              <h2>5-Day Forecast:</h2>
+              <div class="row five-day"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-
-<script src="script.js"></script>
-
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
